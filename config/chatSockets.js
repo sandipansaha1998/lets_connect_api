@@ -1,7 +1,7 @@
 module.exports.chatSocket = function (socketServer) {
   let io = require("socket.io")(socketServer, {
     cors: {
-      origin: "https://lets-connect-india.netlify.app/",
+      origin: "https://lets-connect-india.netlify.app",
       methods: ["GET", "POST"],
     },
   });
