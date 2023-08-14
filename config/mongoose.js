@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const uri = `mongodb+srv://sandipandeveloper:Samya280199@cluster0.ucj81es.mongodb.net/lets_connect_api?retryWrites=true&w=majority`;
+const env = require("./enviroment");
+
+const uri = `mongodb+srv://${env.user}:${env.password}@cluster0.ucj81es.mongodb.net/lets_connect_api?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 

@@ -89,3 +89,10 @@ module.exports.register = async function (req, res) {
     });
   }
 };
+// Fetch all users
+module.exports.getAll = async function (req, res) {
+  let allUsers = await User.find();
+  return res.status(200).json({
+    data: { allUsers },
+  });
+};

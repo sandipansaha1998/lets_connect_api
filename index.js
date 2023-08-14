@@ -7,6 +7,11 @@ const cors = require("cors");
 // Database Connection
 const db_connection = require("./config/mongoose");
 
+// Socket connection Configuration
+const chatServer = require("http").Server(app);
+const chatSocket = require("./config/chatSockets.js").chatSocket(chatServer);
+const socketPort = 5050;
+
 // Allowing CORS requests//Remember to change the allowed orgin
 app.use(cors());
 
@@ -31,7 +36,14 @@ db_connection().then(() => {
       console.log(`Server Failed to start . Error Encountered : ${err} `);
       return;
     }
-
+    // Starting the socket server
+    chatServer.listen(socketPort, (err) => {
+      if (err) {
+        console.log("Error in starting server");
+        return;
+      }
+      console.log(`Socket successfully listen on port ${socketPort}`);
+    });
     console.log(`Server started succesfully`);
   });
 });
